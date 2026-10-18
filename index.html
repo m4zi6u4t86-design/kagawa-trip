@@ -1,421 +1,89 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>香川五天四夜 V8｜互動旅遊手冊</title><style>:root{--ink:#203344;--muted:#687985;--teal:#087d7b;--bg:#f3f7f5;--line:#dce7e4}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,'Noto Sans TC',sans-serif;color:var(--ink)}header{background:linear-gradient(120deg,#0c686a,#1e9184);color:white;padding:25px 18px 24px}header h1{margin:0;font-size:25px}header p{margin:7px 0 0;opacity:.92;font-size:14px}.wrap{max-width:1050px;margin:auto;padding:16px}.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px}.tabs button{border:1px solid var(--line);background:white;border-radius:12px;padding:11px 15px;min-width:86px;font-weight:700;color:var(--ink);cursor:pointer}.tabs button.active{background:var(--teal);color:white}.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 4px 15px #173b3710}.panel h2{font-size:20px;margin:0 0 5px}.sub{font-size:13px;color:var(--muted)}#map{height:460px;border-radius:12px;margin-top:12px}.stop{border-top:1px solid var(--line);padding:14px 0}.stop:first-child{border-top:0}.time{font-size:12px;color:var(--teal);font-weight:700}.stop h3{font-size:16px;margin:5px 0}.stop p{font-size:13px;color:var(--muted);line-height:1.65;margin:5px 0}.pill{display:inline-block;background:#e5f3ef;color:#08716e;border-radius:20px;padding:3px 9px;font-size:12px;margin:5px 5px 5px 0}.links{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}.links a{font-size:12px;color:#086d74;text-decoration:none;border:1px solid #bcd8d4;border-radius:9px;padding:7px 9px}.links a:hover{background:#eef8f5}.notice{background:#fff6dc;border:1px solid #f1d99b;border-radius:12px;padding:12px;font-size:13px;line-height:1.6;margin:12px 0}.details{font-size:13px;line-height:1.7;color:var(--muted)}.topline{display:flex;align-items:center;justify-content:space-between;gap:8px}.btn{background:#fff;color:var(--teal);border:1px solid #bcd8d4;border-radius:10px;padding:8px 10px;cursor:pointer}.foot{font-size:12px;color:var(--muted);padding:18px 0 28px;line-height:1.7}@media(max-width:760px){.layout{grid-template-columns:1fr}#map{height:330px}.wrap{padding:12px}header h1{font-size:22px}}.backup{margin-top:9px;background:#edf7f4;border-radius:10px;padding:10px;font-size:12px}.backup strong{color:#096f6a}.links button{font-size:12px}.stop .btn{padding:7px 9px}.route-step{position:relative;padding-left:23px}.route-step:before{content:"";position:absolute;left:7px;top:22px;bottom:-15px;border-left:3px solid #20a4a0}.route-step:last-child:before{display:none}.route-step:after{content:"";position:absolute;left:1px;top:19px;width:15px;height:15px;border-radius:50%;background:#0b807e;border:2px solid white;box-shadow:0 0 0 1px #0b807e}.leg{margin:12px 0 4px;padding:8px;background:#f0f8fb;border-radius:9px;font-size:12px}.leg a{color:#076c7b;font-weight:700;text-decoration:none}.routehint{font-size:12px;color:#657985;line-height:1.65;margin-top:8px}
-:root{--accent:#ef7f56;--soft:#eaf6f2}
-button,a{-webkit-tap-highlight-color:transparent}
-.tabs{position:sticky;top:0;z-index:20;margin:0 -16px;padding:10px 16px;background:rgba(243,247,245,.96);backdrop-filter:blur(10px);scroll-snap-type:x mandatory;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}.tabs button{min-height:52px;scroll-snap-align:center;flex:1}.tabs button.active{box-shadow:0 5px 14px #087d7b33}
-.stop{background:#fff}.stop h3{font-size:18px;line-height:1.35}.stop p{font-size:14px;color:#526570}
-.meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:9px 0}.meta span{background:#f4f8f7;border:1px solid var(--line);border-radius:9px;padding:7px 8px;font-size:12px;color:#455a64}
-.links a,.links button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}.links .primary{background:var(--teal);border-color:var(--teal);color:#fff;flex:1}
-.backup{border:1px solid #cfe6df}.backup .links a{background:#fff;flex:1}
-.verified{font-size:11px;color:#647780;margin-top:7px}.verified a{color:#087d7b}.map-panel{align-self:start}.transport-card{background:var(--soft);border-radius:12px;padding:12px;margin-top:10px}.transport-card strong{display:block;color:#08716e;margin-bottom:4px}
-.depart{margin:12px 0 4px;padding:12px 14px;border-radius:13px;background:linear-gradient(120deg,#fff0e9,#fff8e8);border:1px solid #f3c9ac}.depart strong{display:block;color:#a34f2f;font-size:15px}.depart small{display:block;margin-top:4px;color:#765f52;line-height:1.5}.dayplan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:10px 0 2px}.dayplan div{border:1px solid var(--line);border-radius:10px;padding:8px;background:#f8fbfa}.dayplan b{display:block;color:var(--teal);font-size:13px}.dayplan span{font-size:12px;color:#5a6b74;line-height:1.4}
-.a11y-note{font-size:13px;color:#4d626d;margin-top:7px}
-.quick-nav{display:none}
-@media(max-width:760px){body{padding-bottom:82px;font-size:17px;line-height:1.65;background:#edf3f1}header{padding:19px 16px 18px}header h1{font-size:24px;line-height:1.35}header p{font-size:16px;line-height:1.55}.wrap{padding:11px 12px}.tabs{margin:0 -12px;padding:10px 12px;gap:9px}.tabs button{min-width:78px;min-height:58px;padding:9px 10px;font-size:17px}.tabs button small{font-size:14px}.layout{display:flex;flex-direction:column;gap:13px}.panel{padding:16px;border-radius:14px}.panel h2{font-size:23px;line-height:1.35}.sub{font-size:15px;line-height:1.55;color:#4e616d}.topline{align-items:flex-start;gap:10px}.topline .btn{white-space:nowrap;min-height:50px;font-size:15px}.depart{padding:14px}.depart strong{font-size:19px}.depart small{font-size:16px;line-height:1.65}.dayplan{grid-template-columns:1fr 1fr;gap:9px}.dayplan div{padding:10px}.dayplan b{font-size:17px}.dayplan span{font-size:15px;line-height:1.55}.route-step{padding-left:22px}.stop{padding-top:18px}.time{font-size:15px}.stop h3{font-size:21px;margin-top:7px}.stop p{font-size:17px;line-height:1.7;color:#3f535f}.pill,.backup{font-size:15px;line-height:1.6}.meta{grid-template-columns:1fr}.meta span{font-size:15px;padding:9px}.links{display:grid;grid-template-columns:1fr 1fr;gap:9px}.links a,.links button{min-height:52px;font-size:16px;padding:10px}.links .primary{grid-column:1/-1}.backup .links{grid-template-columns:1fr}.leg{padding:11px;font-size:15px;line-height:1.55}.leg a{display:block;margin-top:6px;min-height:44px;padding-top:9px;font-size:16px}.routehint,.details,.notice,.foot{font-size:16px;line-height:1.7}.map-panel{order:2}#map{height:310px}.quick-nav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -5px 16px #20334418;gap:9px}.quick-nav button{flex:1;border:0;border-radius:12px;background:var(--teal);color:#fff;min-height:54px;font-size:17px;font-weight:800}.quick-nav button:last-child{background:#203344}}
-.coupon-summary p{margin:7px 0}.coupon-summary summary,.foot summary{cursor:pointer;min-height:44px;padding:8px 0}.coupon-summary a{color:#086d74}#dailyCoupon{background:#eaf6f2;border-color:#bcd8d4}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #ef7f56;outline-offset:3px}</style></head><body><header><div class="wrap" style="padding:0"><h1>🍜 香川 5 天 4 夜｜互動旅遊手冊</h1><p>2026/10/25（日）– 10/29（四） · 4 位旅客 · 高松 The PORT 306（片原町站附近）</p></div></header><main class="wrap"><aside class="notice coupon-summary" aria-label="星宇優惠券提醒"><strong>🎟️ 星宇優惠券｜10/25 台中機場，4 人各自領取</strong><p>10/25 機場巴士去程 · 10/26 栗林公園 · 10/27 一般渡輪來回 · 10/29 機場巴士回程</p><details><summary>領券與使用須知</summary><p>符合資格的個人來回機票旅客，於JX300起飛前3小時內至星宇報到櫃檯掃碼、登入並填問卷。每位成人綁定本人帳號與一台手機；使用時開啟動態券，截圖／紙本無效。巴士、渡輪各可使用兩次。活動有效至2027/3/31，仍以官方條件與現場受理為準。</p><a href="https://media.starlux-airlines.com/takamatsu/index.html#sec5a" target="_blank" rel="noopener">查看星宇官方活動與資格 ↗</a></details></aside><nav class="tabs" id="tabs"></nav><div class="layout"><section class="panel"><div class="topline"><div><h2 id="daytitle"></h2><div class="sub" id="daydesc"></div></div><button class="btn" id="copy">分享今日清單</button></div><div class="notice" id="dailyCoupon"></div><div id="schedule"></div><div id="stops"></div></section><section class="panel map-panel" id="mapPanel"><h2>🗺️ 當日地圖</h2><div class="sub">選擇左側景點或餐廳，地圖即切換位置；可另開 Google Maps 導航。</div><iframe id="map" title="Google 地圖" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;border:0;background:#eef2f1" allowfullscreen></iframe><div class="links"><a id="mapOpen" target="_blank" rel="noopener">🗺️ 在 Google Maps 開啟目前位置</a><a id="allMap" target="_blank" rel="noopener">🧭 在 Google Maps 查看當日路線</a></div><div class="routehint">站點依行程排列，地圖顯示單站位置；陸路請分段導航。小豆島提供天使之路回港步行路線；跨海請依官方船班搭乘，地圖不代表已確認的交通班次。</div><div class="notice" id="warning"></div><h2 style="font-size:17px;margin-top:14px">🚆 交通與預算</h2><div class="transport-card"><strong>今天怎麼走</strong><div class="details" id="transport"></div></div></section></div><footer class="foot"><strong>V8 · 更新／官方資料核對：2026/10/18</strong><br>活動時間為規劃；航班以機票、交通以當日公告為準。住宿定位採片原町站近似點。觀光巴士4人已付¥39,200，勿重複購票。餐廳未代訂。<details><summary>官方來源與出發前複查</summary><div class="links"><a href="https://media.starlux-airlines.com/takamatsu/index.html#sec5a" target="_blank" rel="noopener">星宇優惠券官方 ↗</a><a href="https://www.shikokuferry.com/route2" target="_blank" rel="noopener">一般渡輪時刻／彩繪船提醒 ↗</a><a href="https://shodoshima-kotu.com/tw/plan/shuttlebus/" target="_blank" rel="noopener">觀光巴士／提前下車 ↗</a><a href="https://www.kotoden.co.jp/publichtm/bus/rosen/yashima/index.html" target="_blank" rel="noopener">屋島接駁官方時刻 ↗</a><a href="https://www.kotoden.co.jp/publichtm/bus/limousine/2012/pdf/20261025kudari.pdf" target="_blank" rel="noopener">機場巴士10/25–11/30表 ↗</a><a href="https://www.town.tonosho.kagawa.jp/kanko/map_pamphlet/3277.html" target="_blank" rel="noopener">天使之路潮見表 ↗</a><a href="https://www.izumi.jp/tenpo/takamatsu/shop/food/ryujinmaru" target="_blank" rel="noopener">龍神丸營業時間 ↗</a></div><p>已核對：一般渡輪08:02／18:40、屋島16:54、觀光巴士10:15–約16:15及可提前下車、龍神丸21:00關門。待確認：彩繪船配船、提前下車實際時間、潮況、機場巴士當日班次、餐廳店休與訂位。</p></details></footer><div class="quick-nav"><button type="button" id="toPlan">今日行程</button><button type="button" id="toMap">地圖導航</button></div></main><script>
-// V8｜2026/10/18 核對官方交通資訊；所有活動時間為規劃。
-const days=[
-  {
-    "date": "10/25（日）",
-    "title": "抵達高松・玉藻公園・YouMe Town",
-    "desc": "JX300 抵達，入住 The PORT 306，購物與龍神丸晚餐",
-    "depart": "台中機場報到時｜4 人各自領取星宇優惠券",
-    "note": "JX300 08:50–12:20（兩地當地時間）；通關後搭機場巴士。住宿先寄放行李，入住時間依民宿指南。",
-    "items": [
-      [
-        "08:50–12:20",
-        "JX300 台中→高松"
-      ],
-      [
-        "15:30",
-        "玉藻公園"
-      ],
-      [
-        "17:00–20:00",
-        "YouMe Town 購物／晚餐"
-      ]
-    ],
-    "coupon": "🎟️ 今天用券：機場巴士去程。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。",
-    "warning": "行程時間為安排目標；入境或交通延遲時縮短公園停留。玉藻公園各入口開放時段不同，入園前看官方公告。龍神丸官方營業 11:00–21:00，最後點餐 20:30；餐廳未代訂。",
-    "transport": "高松機場→市區：機場利木津巴士，使用星宇去程優惠券；國際線通常落地約45分鐘後發車，以現場為準。兵庫町／高松站至住宿步行，住宿至玉藻公園步行；玉藻公園→YouMe Town 請搭市區公車或計程車，勿照步行全日路線走。優惠券外交通另計。",
-    "stops": [
-      {
-        "time": "報到時・起飛前",
-        "name": "台中國際機場｜星宇優惠券領取",
-        "type": "領券／早餐",
-        "desc": "4 位成人各自以手機掃描星宇櫃檯 NFC／QR Code，登入並填問卷。限符合資格的台灣護照、台中–高松來回個人機票；JX300 起飛前3小時才開放。成人券綁定本人帳號與一台手機。",
-        "query": "臺中國際機場"
-      },
-      {
-        "time": "08:50–12:20",
-        "name": "JX300 台中 → 高松",
-        "type": "航班",
-        "desc": "依您確認的航班時間；台灣與日本有1小時時差，均標當地時間。實際依機票及航空公司通知。",
-        "query": "高松空港"
-      },
-      {
-        "time": "入境後",
-        "name": "機場巴士 → The PORT 306",
-        "type": "交通／住宿",
-        "desc": "使用機場巴士去程券。先到片原町附近住宿寄放行李；地圖以片原町站近似定位，精確地址與入住時間依民宿指南。",
-        "query": "片原町駅 高松"
-      },
-      {
-        "time": "約14:00｜午餐",
-        "name": "さぬき麺業 兵庫町店",
-        "type": "首選餐廳",
-        "desc": "吃讚岐烏龍麵，約 ¥700–1,500／人；時間配合通關與寄放行李調整。",
-        "query": "さぬき麺業 兵庫町店 高松",
-        "alt": "備案：めりけんや 高松駅前店；營業時間當日確認。"
-      },
-      {
-        "time": "15:30",
-        "name": "玉藻公園",
-        "type": "景點",
-        "desc": "高松城跡散步，約16:15–16:30離開，預留前往商場的交通時間。",
-        "query": "玉藻公園 高松"
-      },
-      {
-        "time": "17:00–19:00",
-        "name": "YouMe Town 高松",
-        "type": "購物",
-        "desc": "ゆめタウン高松購物、藥妝與伴手禮；與晚餐在同一商場，回程公車班次另查。",
-        "query": "ゆめタウン高松"
-      },
-      {
-        "time": "19:00–20:00",
-        "name": "龍神丸 ゆめタウン高松店",
-        "type": "首選餐廳",
-        "desc": "商場內晚餐，名物為稻草炙燒鰹魚；官方最後點餐20:30。預留排隊時間。",
-        "query": "龍神丸 ゆめタウン高松店",
-        "alt": "備案：スシロー ゆめタウン高松店或商場內其他仍營業餐廳；依當日候位。"
-      }
-    ]
-  },
-  {
-    "date": "10/26（一）",
-    "title": "栗林公園・北濱 Alley・屋島",
-    "desc": "屋島 A 公車／B 計程車；晚上 Tiger 與一鶴順序彈性",
-    "depart": "08:30 從住宿出門",
-    "note": "以16:54下山公車為A方案；想留看夕陽或錯過班次，改B方案並事先安排計程車。",
-    "items": [
-      [
-        "09:00–11:00",
-        "栗林公園"
-      ],
-      [
-        "12:45",
-        "北濱 Alley"
-      ],
-      [
-        "15:30",
-        "屋島山上"
-      ]
-    ],
-    "coupon": "🎟️ 今天用券：栗林公園入園。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。",
-    "warning": "官方2026/7/18表：16:54屋島山上→17:02琴電屋島→17:11 JR屋島。10/26不在夜間臨時班日期內；舊版「平日末班17:30」已移除。Onitsuka Tiger按20:00關門安排，出發前再查店舖公告。",
-    "transport": "住宿→栗林公園：琴電＋步行或計程車；上原屋→北濱Alley：市區交通；北濱Alley→屋島：琴電／JR轉山上接駁或計程車，提早看上山班次。A：16:54接駁下山轉電車；B：預約計程車下山，車資另計。",
-    "stops": [
-      {
-        "time": "09:00–11:00",
-        "name": "栗林公園",
-        "type": "景點／優惠券",
-        "desc": "使用星宇栗林公園券。庭園慢走約2小時，11:00離園前往上原屋。",
-        "query": "栗林公園 高松"
-      },
-      {
-        "time": "11:15｜午餐",
-        "name": "上原屋本店",
-        "type": "首選餐廳",
-        "desc": "かけうどん搭天婦羅，約¥500–1,000／人；現行官方09:30–14:30、週日公休，週一仍需看臨時店休。",
-        "query": "上原屋本店 高松"
-      },
-      {
-        "time": "12:45",
-        "name": "北濱 Alley",
-        "type": "散步／咖啡",
-        "desc": "倉庫街散步、咖啡與小店；各店營業不同。預留約1小時，再出發前往屋島。",
-        "query": "北浜alley 高松"
-      },
-      {
-        "time": "15:30",
-        "name": "屋島山上",
-        "type": "景點",
-        "desc": "欣賞高松與瀨戶內海；A方案需提早走回山上公車站。看夕陽則改B方案，不能同時趕16:54公車。",
-        "query": "屋島山上 やしまーる"
-      },
-      {
-        "time": "A 16:54｜B 留晚後",
-        "name": "屋島下山｜A 公車・B 計程車",
-        "type": "交通",
-        "desc": "A：16:54由屋島山上搭接駁，17:02到琴電屋島／17:11到JR屋島，再轉車回市區。B：沒搭到或想留看夕陽，事先約計程車；非保證隨叫隨到。",
-        "query": "屋島山上 バス停"
-      },
-      {
-        "time": "晚間彈性｜20:00前",
-        "name": "Onitsuka Tiger 高松店",
-        "type": "購物",
-        "desc": "按20:00關門安排，預留試穿時間。若下山較晚優先來此；若先吃一鶴，也須倒推候位與購物時間。",
-        "query": "オニツカタイガー 高松"
-      },
-      {
-        "time": "晚間彈性｜與購物互換",
-        "name": "一鶴 高松店",
-        "type": "首選餐廳",
-        "desc": "骨付鳥晚餐，約¥1,500–3,000／人；一鶴與Tiger順序可交換。週一營業時間與候位仍需當日確認。",
-        "query": "一鶴 高松店"
-      }
-    ]
-  },
-  {
-    "date": "10/27（二）",
-    "title": "小豆島觀光巴士・天使之路",
-    "desc": "一般渡輪來回用券；觀光巴士4人已付¥39,200",
-    "depart": "07:00 左右從住宿出門",
-    "note": "建議07:20–07:30抵達一般渡輪碼頭；08:02開船，不是09:10高速船。攜帶已付觀光巴士憑證。",
-    "items": [
-      [
-        "08:02–09:02",
-        "一般渡輪去程"
-      ],
-      [
-        "10:15–約16:15",
-        "已付觀光巴士"
-      ],
-      [
-        "18:40–19:40",
-        "一般渡輪回程"
-      ]
-    ],
-    "coupon": "🎟️ 今天用券：高松↔土庄一般渡輪，去、回各使用一次。高速船不列入本次用券安排。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。",
-    "warning": "呆呆獸彩繪船只是候選，船公司可能調船，請當日向碼頭確認。觀光巴士官網允許回程經銀浦在天使之路下車，但須上車告知並確認實際時間；16:15是全程預定結束時間，不保證精準在此下車。天使之路依潮汐、天候與現場管制，不保證可通行。",
-    "transport": "08:02–09:02高松→土庄一般渡輪；09:05港口早餐後，09:30起辦理觀光巴士報到，10:15出發。巴士已付¥9,800／人、合計¥39,200，午餐另計，勿重複購買。天使之路→土庄港步行約30–35分鐘，保留候船緩衝；18:40–19:40一般渡輪回高松，船況出發前複查。",
-    "stops": [
-      {
-        "time": "08:02–09:02",
-        "name": "高松港 → 土庄港｜一般渡輪",
-        "type": "渡輪／優惠券",
-        "desc": "使用一般渡輪去程券；提早到港確認船席、乘船方式及是否為呆呆獸彩繪船。",
-        "query": "高松港 フェリー 土庄"
-      },
-      {
-        "time": "09:05｜早餐",
-        "name": "土庄港港口早餐",
-        "type": "早餐",
-        "desc": "到港後在港區快速用餐；店家未指定且營業待確認，請前一晚備妥飯糰麵包，以免沒有合適店家。",
-        "query": "土庄港観光センター"
-      },
-      {
-        "time": "09:30起報到｜10:15–約16:15",
-        "name": "土庄港觀光中心｜觀光巴士",
-        "type": "已付款行程",
-        "desc": "4人已付¥39,200。出示預約憑證，上車即確認天使之路提前下車；全程預定16:15結束，依實際路況。",
-        "query": "土庄港観光センター"
-      },
-      {
-        "time": "巴士途中｜午餐",
-        "name": "觀光巴士途中午餐",
-        "type": "用餐",
-        "desc": "依巴士當日停靠安排快速用餐，午餐不含在已付套票內；可於寒霞溪停靠時選簡餐，勿錯過集合。",
-        "query": "寒霞渓 山頂 レストラン"
-      },
-      {
-        "time": "16:15–17:15｜目標",
-        "name": "天使之路",
-        "type": "景點",
-        "desc": "回程提前下車後遊覽；停留時間依巴士與潮況調整。出發前查看2026官方潮見表，現場安全優先。",
-        "query": "エンジェルロード 小豆島"
-      },
-      {
-        "time": "17:15–17:50",
-        "name": "步行回土庄港",
-        "type": "步行約30–35分鐘",
-        "desc": "17:15離開天使之路，約17:50回到一般渡輪港區；若疲累或延誤，提早改計程車。天黑留意人行空間。",
-        "query": "土庄港 フェリー"
-      },
-      {
-        "time": "18:40–19:40",
-        "name": "土庄港 → 高松港｜一般渡輪",
-        "type": "渡輪／優惠券",
-        "desc": "使用一般渡輪回程券，提早候船；依當日運航公告確認，不以高速船代替。",
-        "query": "土庄港 フェリー"
-      },
-      {
-        "time": "回高松後｜晚餐彈性",
-        "name": "高松市區晚餐",
-        "type": "用餐",
-        "desc": "依回港時間與體力選仍營業的餐廳；候位太久改便利商店。",
-        "query": "高松 片原町 レストラン"
-      }
-    ]
-  },
-  {
-    "date": "10/28（三）",
-    "title": "琴平・金刀比羅宮・橄欖牛",
-    "desc": "琴平烏龍麵與老街；18:30焼肉 シージャン",
-    "depart": "08:15 左右從住宿出門",
-    "note": "琴電班次出發前核對；下山後順路吃麵、逛老街，回高松吃橄欖牛。",
-    "items": [
-      [
-        "上午",
-        "金刀比羅宮"
-      ],
-      [
-        "中午／午後",
-        "琴平烏龍麵・老街"
-      ],
-      [
-        "18:30",
-        "焼肉 シージャン"
-      ]
-    ],
-    "coupon": "今天沒有排定星宇券使用項目。",
-    "warning": "本宮約785階，依體力調整；午餐與神椿可依下山動線調整先後。18:30是用餐計畫，未取得訂位確認，請提前預約四人座並確認橄欖牛供應。",
-    "transport": "片原町→瓦町轉琴平線→琴電琴平；往返電車時間請查當日官方時刻表。回到高松後前往焼肉 シージャン，預留18:30用餐。",
-    "stops": [
-      {
-        "time": "約09:30",
-        "name": "琴電琴平站",
-        "type": "交通",
-        "desc": "從瓦町轉琴平線，出站後步行前往表參道。",
-        "query": "琴電琴平駅",
-        "lat": 34.1914,
-        "lng": 133.8236
-      },
-      {
-        "time": "10:00–12:30",
-        "name": "金刀比羅宮",
-        "type": "景點",
-        "desc": "走表參道、參拜本宮，視體力決定停留。",
-        "query": "金刀比羅宮",
-        "lat": 34.1836,
-        "lng": 133.8099
-      },
-      {
-        "time": "12:30–13:30",
-        "name": "こんぴらうどん",
-        "type": "首選餐廳",
-        "desc": "必點：しょうゆ天うどん。特色是店內純手打麵、15 小時萃取高湯，以及接單後現炸的蝦天／雞天；老店建築本身也是登錄有形文化財。預算約 ¥700–1,200／人。",
-        "alt": "備案：いわのや或表參道其他烏龍麵店。",
-        "query": "こんぴらうどん 参道店",
-        "lat": 34.1885,
-        "lng": 133.8195
-      },
-      {
-        "time": "13:45–14:30",
-        "name": "神椿",
-        "type": "甜點",
-        "desc": "必點人氣 No.1 神椿パフェ；特色是金刀比羅宮石階約 500 階處、由資生堂パーラー經營。咖啡廳 10:00–17:00，甜點預算約 ¥1,000–2,500／人。若客滿改吃灸まん抹茶組。",
-        "query": "神椿 琴平",
-        "lat": 34.1848,
-        "lng": 133.8156
-      },
-      {
-        "time": "14:45–15:40｜表參道逛街",
-        "name": "琴平表參道・新町商店街",
-        "type": "伴手禮購物",
-        "desc": "下山後沿表參道順路回車站。可買灸まん、和三盆、讚岐烏龍麵、金刀比羅宮御守及「こんぴら狗」小物；店家多為個別營業，看到喜歡的先買。",
-        "alt": "媽媽若走累，可在表參道入口咖啡店休息，其他人分組採買。",
-        "query": "金刀比羅宮 表参道 商店街"
-      },
-      {
-        "time": "18:30",
-        "name": "焼肉 シージャン｜橄欖牛",
-        "type": "重點晚餐",
-        "desc": "橄欖牛晚餐，約¥6,000–8,000／人。18:30為計畫時間，訂位狀態待確認，建議提前預約4人座；當日供應與營業再確認。",
-        "alt": "備案：高松市區其他供應橄欖牛的燒肉店，或一般燒肉。",
-        "query": "焼肉 シージャン 高松"
-      }
-    ]
-  },
-  {
-    "date": "10/29（四）",
-    "title": "高松早餐・機場・返台",
-    "desc": "めりけんや早餐；JX301 13:20–15:40返台",
-    "depart": "早餐與退房後｜09:15前抵達高松站候車",
-    "note": "原定09:35→10:26與官方表不符：09:35由高松站3號乘車處出發約10:18到機場；09:41班才是10:26到。暫按09:35班，出發前再核實。",
-    "items": [
-      [
-        "07:30–08:20",
-        "めりけんや早餐"
-      ],
-      [
-        "09:35–約10:18",
-        "機場巴士／暫定"
-      ],
-      [
-        "13:20–15:40",
-        "JX301 高松→台中"
-      ]
-    ],
-    "coupon": "🎟️ 今天用券：機場巴士回程。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。",
-    "warning": "機場巴士依官方10/25–11/30表核對；班次仍可能變更，出發前重查。預留國際線報到、安檢與候車時間，報到優先於採買；航班以機票及航空公司通知為準。",
-    "transport": "住宿退房→高松站3號乘車處，暫搭09:35班→約10:18高松機場，使用回程優惠券。注意不是09:35→10:26；後者到達時間對應09:41班。報到後再採買，13:20搭JX301，15:40抵達台中。",
-    "stops": [
-      {
-        "time": "07:30–08:20",
-        "name": "めりけんや 高松駅前店",
-        "type": "早餐首選",
-        "desc": "最後一碗烏龍麵，約¥500–1,000／人；時間配合退房，不耽誤候車。",
-        "query": "めりけんや 高松駅前店"
-      },
-      {
-        "time": "09:15前到站｜09:35–約10:18 暫定",
-        "name": "高松站 → 高松機場",
-        "type": "交通／優惠券",
-        "desc": "高松站3號乘車處，使用機場巴士回程券。官方表09:35→10:18；09:41→10:26。出發前再核實，滿座或塞車須有緩衝。",
-        "query": "高松駅 空港リムジンバス 3番のりば"
-      },
-      {
-        "time": "抵達後｜報到優先",
-        "name": "高松機場｜報到與伴手禮",
-        "type": "機場",
-        "desc": "先辦理登機與託運，再視時間補買烏龍麵、和三盆等；留意安檢與登機截止時間。",
-        "query": "高松空港"
-      },
-      {
-        "time": "13:20–15:40",
-        "name": "JX301 高松 → 台中",
-        "type": "返台航班",
-        "desc": "兩地當地時間；航班異動以航空公司通知為準。",
-        "query": "臺中國際機場"
-      }
-    ]
-  }
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#087d7b"><title>香川五天四夜 V8｜行程・地圖・吃買指南</title><style>
+:root{--ink:#203344;--muted:#60747d;--teal:#087d7b;--bg:#f3f7f5;--line:#dce7e4;--soft:#eaf6f2}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,'Noto Sans TC',sans-serif}button,input,select{font:inherit}button,a,summary{-webkit-tap-highlight-color:transparent}button,summary{cursor:pointer}a{color:var(--teal)}button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid #ef7f56;outline-offset:3px}[hidden]{display:none!important}header{background:linear-gradient(120deg,#0c686a,#1e9184);color:white;padding:22px 18px}header h1{font-size:25px;margin:0}header p{font-size:14px;margin:5px 0 0;opacity:.92}.wrap{max-width:1040px;margin:auto;padding:16px}.header-inner{max-width:1008px;margin:auto}.main-nav{display:flex;gap:8px;margin-bottom:12px}.main-nav button,.tabs button,.filters button{min-height:46px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font-weight:700;padding:9px 16px}.main-nav button{flex:1}.main-nav button.active,.tabs button.active,.filters button.active{background:var(--teal);color:#fff;border-color:var(--teal)}.coupon{background:#fff6dc;border:1px solid #ecdba8;border-radius:12px;padding:8px 12px;margin-bottom:10px;font-size:14px}.coupon summary{font-weight:700}.coupon p{margin:8px 0}.tabs{display:flex;gap:8px;position:sticky;top:0;z-index:10;background:rgba(243,247,245,.97);padding:9px 0;margin-bottom:12px}.tabs button{flex:1;min-width:0;padding:7px}.tabs small{font-size:12px;display:block}.panel{background:#fff;border:1px solid var(--line);border-radius:17px;padding:20px;box-shadow:0 4px 15px #173b3710}.day-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(250px,.8fr);gap:16px;align-items:start}.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}h2{font-size:23px;line-height:1.4;margin:0 0 6px}h3{font-size:19px;line-height:1.45;margin:5px 0}.sub{font-size:14px;color:var(--muted)}.btn{min-height:44px;border:1px solid #bcd8d4;background:#fff;color:var(--teal);border-radius:10px;padding:8px 12px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:4px}.primary{background:var(--teal);border-color:var(--teal);color:white}.share{white-space:nowrap;font-size:13px}.depart{margin:14px 0 8px;padding:11px 13px;background:#fff1e7;border:1px solid #f0d6c3;border-radius:12px;color:#844b30;font-weight:700}.coupon-day{font-size:14px;color:#08716e;margin:7px 0 10px}.important{background:#fff8e7;border-left:3px solid #e5a43b;padding:10px 12px;border-radius:0 10px 10px 0;margin:10px 0 15px;font-size:14px}.stop{position:relative;padding:18px 0 18px 22px;border-top:1px solid var(--line)}.stop:before{content:'';position:absolute;left:3px;top:26px;width:9px;height:9px;background:var(--teal);border-radius:50%}.stop p{margin:6px 0 10px;color:#4f626d}.time{font-size:13px;font-weight:750;color:var(--teal)}.place{color:var(--ink);border:0;background:none;padding:0;text-align:left;font-weight:750;line-height:inherit;font-size:inherit}.place:hover{text-decoration:underline;text-decoration-color:var(--teal)}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions .btn{font-size:14px}.stop details{margin-top:10px;color:var(--muted);font-size:14px}.stop details summary{min-height:36px;display:list-item}.stop details p{font-size:14px}.backup-links{display:flex;flex-direction:column;gap:6px}.backup-links a{padding:6px 0}.transport summary,.foot summary{padding:9px 0;font-weight:700}.transport p{font-size:14px;color:var(--muted)}.map-call{display:block;width:100%;margin:0 0 10px}.guide-header{margin-bottom:16px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.filters button{font-size:14px;padding:7px 13px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.guide-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:19px;scroll-margin-top:16px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.02em;color:var(--teal)}.guide-card h3{font-size:20px;margin:8px 0}.guide-card .lead{color:var(--muted);margin:0 0 12px;font-size:14px}.recommend{background:var(--soft);padding:11px;border-radius:10px;font-size:15px}.recommend b{display:block;color:#096f6a;margin-bottom:4px}.budget{font-size:13px;color:var(--muted);margin:10px 0}.guide-card details{margin:12px 0;font-size:14px}.guide-card summary{font-weight:700;min-height:36px}.guide-card dl{margin:6px 0}.guide-card dt{font-weight:700;color:var(--teal);margin-top:11px}.guide-card dd{margin:3px 0 0;color:#4f626d}.source{font-size:13px;display:inline-block;padding:8px 4px}.guide-card.focused{outline:3px solid #ef7f56;outline-offset:2px}.foot{font-size:12px;color:var(--muted);margin-top:22px;padding-bottom:20px}.foot p{margin:6px 0}.source-list{display:flex;flex-wrap:wrap;gap:8px}.source-list a{padding:7px}.map-dialog{width:min(760px,calc(100% - 32px));max-height:90dvh;border:0;border-radius:20px;padding:0;color:var(--ink);box-shadow:0 12px 60px #20334455}.map-dialog::backdrop{background:#132c3b88}.map-inner{padding:18px}.map-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.map-top h2{font-size:21px;margin:0}.close{min-width:46px;min-height:44px}.map-inner label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}.map-inner select{width:100%;min-height:46px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:8px;color:var(--ink)}#map{width:100%;height:350px;border:0;border-radius:12px;background:#edf3f1;margin:12px 0}#mapNavigate{width:100%}.map-note{font-size:12px;color:var(--muted);margin:10px 0 0}.return-plan{margin-bottom:12px}body.modal-open{overflow:hidden}.skip{position:absolute;left:12px;top:-80px}.skip:focus{top:8px;z-index:100;background:#fff;padding:12px}.guide-count{font-size:13px;color:var(--muted)}
+@media(max-width:760px){body{padding-bottom:88px;font-size:16px}.wrap{padding:12px}header{padding:17px 16px}header h1{font-size:22px}header p{font-size:13px}.main-nav{position:fixed;bottom:0;left:0;right:0;z-index:30;margin:0;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -4px 14px #20334412;gap:6px}.main-nav button{font-size:14px;padding:9px 4px;min-height:52px;border-radius:10px}.main-nav button span{display:block;line-height:1.25}.coupon{font-size:13px;padding:8px 11px}.tabs{gap:6px;margin:0 -12px 10px;padding:8px 12px}.tabs button{font-size:15px;min-height:52px;padding:5px 0}.tabs small{font-size:12px}.day-layout{display:block}.panel{padding:16px;border-radius:14px}h2{font-size:21px}.topline{gap:8px}.share{font-size:12px;min-height:40px;padding:6px 9px}.day-desc{display:none}.depart{font-size:15px;margin-top:12px;padding:10px}.important{font-size:14px;line-height:1.65}.coupon-day{font-size:13px}.stop{padding:16px 0 16px 18px}.stop:before{left:1px;top:24px}.stop h3{font-size:19px}.stop p{font-size:15px;line-height:1.7}.time{font-size:13px}.actions{gap:8px}.actions .btn{min-height:46px;font-size:14px;padding:8px 12px}.transport{margin-top:12px;padding:12px 16px}.map-call{display:none}.guide-grid{grid-template-columns:1fr}.guide-card{padding:16px;scroll-margin-top:12px}.guide-header{padding:2px 3px}.guide-header h2{font-size:23px}.filters{gap:6px}.filters button{min-height:42px;font-size:13px;padding:7px 10px}.map-dialog{position:fixed;inset:auto 0 0;width:100%;max-width:none;margin:0;max-height:calc(100dvh - 28px);border-radius:20px 20px 0 0;padding-bottom:env(safe-area-inset-bottom)}.map-inner{padding:14px 16px}.map-top h2{font-size:19px}#map{height:min(43dvh,340px)}.foot{font-size:12px;margin-top:16px}.return-plan{font-size:14px}}
+</style></head><body><a class="skip" href="#main">跳至主要內容</a><header><div class="header-inner"><h1>🍜 香川 5 天 4 夜</h1><p>2026/10/25–10/29 · 4人 · The PORT 306／片原町</p></div></header><main class="wrap" id="main">
+<nav class="main-nav" aria-label="主要功能"><button type="button" id="navPlan" class="active" aria-current="page"><span>📅 每日行程</span></button><button type="button" id="navMap" aria-haspopup="dialog"><span>🗺️ 地圖</span></button><button type="button" id="navGuide"><span>🍜 吃買指南</span></button></nav>
+<aside class="coupon"><details><summary>🎟️ 10/25 台中機場｜4人各自領星宇券</summary><p>JX300起飛前3小時內，至星宇櫃檯掃碼、登入填問卷。成人券綁本人帳號與一台手機；使用動態券，截圖／紙本無效。</p><p>使用安排：10/25巴士去程、10/26栗林公園、10/27一般渡輪來回、10/29巴士回程。巴士與渡輪各可使用兩次；活動至2027/3/31，資格與受理依官方。</p><a href="https://media.starlux-airlines.com/takamatsu/index.html#sec5a" target="_blank" rel="noopener">官方資格與領券說明 ↗</a></details></aside>
+<section id="planView" aria-label="每日行程"><nav class="tabs" id="tabs" aria-label="選擇旅行日期"></nav><div class="day-layout"><section class="panel"><div class="topline"><div><h2 id="daytitle"></h2><div class="sub day-desc" id="daydesc"></div></div><button type="button" class="btn share" id="copy">分享</button></div><div class="depart" id="depart"></div><p class="coupon-day" id="dailyCoupon"></p><div class="important" id="important"></div><div id="stops"></div></section><aside class="panel transport"><button class="btn primary map-call" type="button" id="desktopMap">🗺️ 開啟當日地圖</button><details><summary>🚆 交通、備案與行前細節</summary><p id="daynote"></p><p id="transport"></p><p id="warning"></p></details></aside></div></section>
+<section id="guideView" hidden aria-labelledby="guideTitle"><div class="guide-header"><h2 id="guideTitle" tabindex="-1">🍜 吃買指南</h2><p class="sub">跟著行程找推薦餐點、分食點法與伴手禮。</p><div class="filters" id="guideFilters" role="group" aria-label="依地區篩選"></div><div class="guide-count" id="guideCount" aria-live="polite"></div></div><button type="button" class="btn return-plan" id="returnPlan">← 回目前行程</button><div class="guide-grid" id="guideCards"></div><p class="sub">4人點法為旅行建議。預算均為每人估算，另有註明官方單品價格者除外；菜單、店休與供應以當日為準，餐廳未代訂。</p></section>
+<footer class="foot"><strong>V8 行程 · 手機介面更新 2026/10/18</strong><details><summary>官方來源與共通須知</summary><p>航班與交通依當日公告；住宿地圖以片原町站近似定位，精確地址依入住指南。活動時間為規劃，餐廳尚未代訂。觀光巴士4人已付¥39,200，勿重複購票。</p><div class="source-list"><a href="https://www.shikokuferry.com/route2" target="_blank" rel="noopener">渡輪</a><a href="https://shodoshima-kotu.com/tw/plan/shuttlebus/" target="_blank" rel="noopener">觀光巴士</a><a href="https://www.kotoden.co.jp/publichtm/bus/rosen/yashima/index.html" target="_blank" rel="noopener">屋島接駁</a><a href="https://www.kotoden.co.jp/publichtm/bus/limousine/2012/pdf/20261025kudari.pdf" target="_blank" rel="noopener">機場巴士</a><a href="https://www.town.tonosho.kagawa.jp/kanko/map_pamphlet/3277.html" target="_blank" rel="noopener">天使之路潮見表</a></div><p>官方資料核對2026/10/18；美食來源附於各介紹。出發前請再確認班次、彩繪船配船、提前下車及潮況。</p></details></footer>
+</main><dialog class="map-dialog" id="mapDialog" aria-labelledby="mapTitle"><div class="map-inner"><div class="map-top"><h2 id="mapTitle">🗺️ 當日地圖</h2><button type="button" class="btn close" id="closeMap" aria-label="關閉地圖">✕ 關閉</button></div><label for="mapSelect">選擇今天的景點或餐廳</label><select id="mapSelect"></select><iframe id="map" title="所選地點的 Google 地圖" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe><a class="btn primary" id="mapNavigate" target="_blank" rel="noopener">🧭 Google Maps 導航 ↗</a><a class="source" id="islandWalk" target="_blank" rel="noopener" hidden>🚶 天使之路 → 土庄港步行路線 ↗</a><p class="map-note">地圖顯示單一地點；跨海依官方船班乘船。地圖載入較慢時可直接開啟導航。</p></div></dialog>
+<script>const days=[{"date":"10/25（日）","title":"抵達高松・玉藻公園・YouMe Town","desc":"JX300 抵達，入住 The PORT 306，購物與龍神丸晚餐","depart":"台中機場報到時｜4 人各自領取星宇優惠券","note":"JX300 08:50–12:20（兩地當地時間）；通關後搭機場巴士。住宿先寄放行李，入住時間依民宿指南。","items":[["08:50–12:20","JX300 台中→高松"],["15:30","玉藻公園"],["17:00–20:00","YouMe Town 購物／晚餐"]],"coupon":"🎟️ 今天用券：機場巴士去程。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。","warning":"行程時間為安排目標；入境或交通延遲時縮短公園停留。玉藻公園各入口開放時段不同，入園前看官方公告。龍神丸官方營業 11:00–21:00，最後點餐 20:30；餐廳未代訂。","transport":"高松機場→市區：機場利木津巴士，使用星宇去程優惠券；國際線通常落地約45分鐘後發車，以現場為準。兵庫町／高松站至住宿步行，住宿至玉藻公園步行；玉藻公園→YouMe Town 請搭市區公車或計程車，勿照步行全日路線走。優惠券外交通另計。","stops":[{"time":"報到時・起飛前","name":"台中國際機場｜星宇優惠券領取","type":"領券／早餐","desc":"4 位成人各自以手機掃描星宇櫃檯 NFC／QR Code，登入並填問卷。限符合資格的台灣護照、台中–高松來回個人機票；JX300 起飛前3小時才開放。成人券綁定本人帳號與一台手機。","query":"臺中國際機場"},{"time":"08:50–12:20","name":"JX300 台中 → 高松","type":"航班","desc":"依您確認的航班時間；台灣與日本有1小時時差，均標當地時間。實際依機票及航空公司通知。","query":"高松空港"},{"time":"入境後","name":"機場巴士 → The PORT 306","type":"交通／住宿","desc":"使用機場巴士去程券。先到片原町附近住宿寄放行李；地圖以片原町站近似定位，精確地址與入住時間依民宿指南。","query":"片原町駅 高松"},{"time":"約14:00｜午餐","name":"さぬき麺業 兵庫町店","type":"首選餐廳","desc":"吃讚岐烏龍麵，約 ¥700–1,500／人；時間配合通關與寄放行李調整。","query":"さぬき麺業 兵庫町店 高松","alt":"備案：めりけんや 高松駅前店；營業時間當日確認。"},{"time":"15:30","name":"玉藻公園","type":"景點","desc":"高松城跡散步，約16:15–16:30離開，預留前往商場的交通時間。","query":"玉藻公園 高松"},{"time":"17:00–19:00","name":"YouMe Town 高松","type":"購物","desc":"ゆめタウン高松購物、藥妝與伴手禮；與晚餐在同一商場，回程公車班次另查。","query":"ゆめタウン高松"},{"time":"19:00–20:00","name":"龍神丸 ゆめタウン高松店","type":"首選餐廳","desc":"商場內晚餐，名物為稻草炙燒鰹魚；官方最後點餐20:30。預留排隊時間。","query":"龍神丸 ゆめタウン高松店","alt":"備案：スシロー ゆめタウン高松店或商場內其他仍營業餐廳；依當日候位。"}]},{"date":"10/26（一）","title":"栗林公園・北濱 Alley・屋島","desc":"屋島 A 公車／B 計程車；晚上 Tiger 與一鶴順序彈性","depart":"08:30 從住宿出門","note":"以16:54下山公車為A方案；想留看夕陽或錯過班次，改B方案並事先安排計程車。","items":[["09:00–11:00","栗林公園"],["12:45","北濱 Alley"],["15:30","屋島山上"]],"coupon":"🎟️ 今天用券：栗林公園入園。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。","warning":"官方2026/7/18表：16:54屋島山上→17:02琴電屋島→17:11 JR屋島。10/26不在夜間臨時班日期內；舊版「平日末班17:30」已移除。Onitsuka Tiger按20:00關門安排，出發前再查店舖公告。","transport":"住宿→栗林公園：琴電＋步行或計程車；上原屋→北濱Alley：市區交通；北濱Alley→屋島：琴電／JR轉山上接駁或計程車，提早看上山班次。A：16:54接駁下山轉電車；B：預約計程車下山，車資另計。","stops":[{"time":"09:00–11:00","name":"栗林公園","type":"景點／優惠券","desc":"使用星宇栗林公園券。庭園慢走約2小時，11:00離園前往上原屋。","query":"栗林公園 高松"},{"time":"11:15｜午餐","name":"上原屋本店","type":"首選餐廳","desc":"かけうどん搭天婦羅，約¥500–1,000／人；現行官方09:30–14:30、週日公休，週一仍需看臨時店休。","query":"上原屋本店 高松"},{"time":"12:45","name":"北濱 Alley","type":"散步／咖啡","desc":"倉庫街散步、咖啡與小店；各店營業不同。預留約1小時，再出發前往屋島。","query":"北浜alley 高松"},{"time":"15:30","name":"屋島山上","type":"景點","desc":"欣賞高松與瀨戶內海；A方案需提早走回山上公車站。看夕陽則改B方案，不能同時趕16:54公車。","query":"屋島山上 やしまーる"},{"time":"A 16:54｜B 留晚後","name":"屋島下山｜A 公車・B 計程車","type":"交通","desc":"A：16:54由屋島山上搭接駁，17:02到琴電屋島／17:11到JR屋島，再轉車回市區。B：沒搭到或想留看夕陽，事先約計程車；非保證隨叫隨到。","query":"屋島山上 バス停"},{"time":"晚間彈性｜20:00前","name":"Onitsuka Tiger 高松店","type":"購物","desc":"按20:00關門安排，預留試穿時間。若下山較晚優先來此；若先吃一鶴，也須倒推候位與購物時間。","query":"オニツカタイガー 高松"},{"time":"晚間彈性｜與購物互換","name":"一鶴 高松店","type":"首選餐廳","desc":"骨付鳥晚餐，約¥1,500–3,000／人；一鶴與Tiger順序可交換。週一營業時間與候位仍需當日確認。","query":"一鶴 高松店"}]},{"date":"10/27（二）","title":"小豆島觀光巴士・天使之路","desc":"一般渡輪來回用券；觀光巴士4人已付¥39,200","depart":"07:00 左右從住宿出門","note":"建議07:20–07:30抵達一般渡輪碼頭；08:02開船，不是09:10高速船。攜帶已付觀光巴士憑證。","items":[["08:02–09:02","一般渡輪去程"],["10:15–約16:15","已付觀光巴士"],["18:40–19:40","一般渡輪回程"]],"coupon":"🎟️ 今天用券：高松↔土庄一般渡輪，去、回各使用一次。高速船不列入本次用券安排。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。","warning":"呆呆獸彩繪船只是候選，船公司可能調船，請當日向碼頭確認。觀光巴士官網允許回程經銀浦在天使之路下車，但須上車告知並確認實際時間；16:15是全程預定結束時間，不保證精準在此下車。天使之路依潮汐、天候與現場管制，不保證可通行。","transport":"08:02–09:02高松→土庄一般渡輪；09:05港口早餐後，09:30起辦理觀光巴士報到，10:15出發。巴士已付¥9,800／人、合計¥39,200，午餐另計，勿重複購買。天使之路→土庄港步行約30–35分鐘，保留候船緩衝；18:40–19:40一般渡輪回高松，船況出發前複查。","stops":[{"time":"08:02–09:02","name":"高松港 → 土庄港｜一般渡輪","type":"渡輪／優惠券","desc":"使用一般渡輪去程券；提早到港確認船席、乘船方式及是否為呆呆獸彩繪船。","query":"高松港 フェリー 土庄"},{"time":"09:05｜早餐","name":"土庄港港口早餐","type":"早餐","desc":"到港後在港區快速用餐；店家未指定且營業待確認，請前一晚備妥飯糰麵包，以免沒有合適店家。","query":"土庄港観光センター"},{"time":"09:30起報到｜10:15–約16:15","name":"土庄港觀光中心｜觀光巴士","type":"已付款行程","desc":"4人已付¥39,200。出示預約憑證，上車即確認天使之路提前下車；全程預定16:15結束，依實際路況。","query":"土庄港観光センター"},{"time":"巴士途中｜午餐","name":"觀光巴士途中午餐","type":"用餐","desc":"依巴士當日停靠安排快速用餐，午餐不含在已付套票內；可於寒霞溪停靠時選簡餐，勿錯過集合。","query":"寒霞渓 山頂 レストラン"},{"time":"16:15–17:15｜目標","name":"天使之路","type":"景點","desc":"回程提前下車後遊覽；停留時間依巴士與潮況調整。出發前查看2026官方潮見表，現場安全優先。","query":"エンジェルロード 小豆島"},{"time":"17:15–17:50","name":"步行回土庄港","type":"步行約30–35分鐘","desc":"17:15離開天使之路，約17:50回到一般渡輪港區；若疲累或延誤，提早改計程車。天黑留意人行空間。","query":"土庄港 フェリー"},{"time":"18:40–19:40","name":"土庄港 → 高松港｜一般渡輪","type":"渡輪／優惠券","desc":"使用一般渡輪回程券，提早候船；依當日運航公告確認，不以高速船代替。","query":"土庄港 フェリー"},{"time":"回高松後｜晚餐彈性","name":"高松市區晚餐","type":"用餐","desc":"依回港時間與體力選仍營業的餐廳；候位太久改便利商店。","query":"高松 片原町 レストラン"}]},{"date":"10/28（三）","title":"琴平・金刀比羅宮・橄欖牛","desc":"琴平烏龍麵與老街；18:30焼肉 シージャン","depart":"08:15 左右從住宿出門","note":"琴電班次出發前核對；下山後順路吃麵、逛老街，回高松吃橄欖牛。","items":[["上午","金刀比羅宮"],["中午／午後","琴平烏龍麵・老街"],["18:30","焼肉 シージャン"]],"coupon":"今天沒有排定星宇券使用項目。","warning":"本宮約785階，依體力調整；午餐與神椿可依下山動線調整先後。18:30是用餐計畫，未取得訂位確認，請提前預約四人座並確認橄欖牛供應。","transport":"片原町→瓦町轉琴平線→琴電琴平；往返電車時間請查當日官方時刻表。回到高松後前往焼肉 シージャン，預留18:30用餐。","stops":[{"time":"約09:30","name":"琴電琴平站","type":"交通","desc":"從瓦町轉琴平線，出站後步行前往表參道。","query":"琴電琴平駅","lat":34.1914,"lng":133.8236},{"time":"10:00–12:30","name":"金刀比羅宮","type":"景點","desc":"走表參道、參拜本宮，視體力決定停留。","query":"金刀比羅宮","lat":34.1836,"lng":133.8099},{"time":"12:30–13:30","name":"こんぴらうどん","type":"首選餐廳","desc":"必點：しょうゆ天うどん。特色是店內純手打麵、15 小時萃取高湯，以及接單後現炸的蝦天／雞天；老店建築本身也是登錄有形文化財。預算約 ¥700–1,200／人。","alt":"備案：いわのや或表參道其他烏龍麵店。","query":"こんぴらうどん 参道店","lat":34.1885,"lng":133.8195},{"time":"13:45–14:30","name":"神椿","type":"甜點","desc":"必點人氣 No.1 神椿パフェ；特色是金刀比羅宮石階約 500 階處、由資生堂パーラー經營。咖啡廳 10:00–17:00，甜點預算約 ¥1,000–2,500／人。若客滿改吃灸まん抹茶組。","query":"神椿 琴平","lat":34.1848,"lng":133.8156},{"time":"14:45–15:40｜表參道逛街","name":"琴平表參道・新町商店街","type":"伴手禮購物","desc":"下山後沿表參道順路回車站。可買灸まん、和三盆、讚岐烏龍麵、金刀比羅宮御守及「こんぴら狗」小物；店家多為個別營業，看到喜歡的先買。","alt":"媽媽若走累，可在表參道入口咖啡店休息，其他人分組採買。","query":"金刀比羅宮 表参道 商店街"},{"time":"18:30","name":"焼肉 シージャン｜橄欖牛","type":"重點晚餐","desc":"橄欖牛晚餐，約¥6,000–8,000／人。18:30為計畫時間，訂位狀態待確認，建議提前預約4人座；當日供應與營業再確認。","alt":"備案：高松市區其他供應橄欖牛的燒肉店，或一般燒肉。","query":"焼肉 シージャン 高松"}]},{"date":"10/29（四）","title":"高松早餐・機場・返台","desc":"めりけんや早餐；JX301 13:20–15:40返台","depart":"早餐與退房後｜09:15前抵達高松站候車","note":"原定09:35→10:26與官方表不符：09:35由高松站3號乘車處出發約10:18到機場；09:41班才是10:26到。暫按09:35班，出發前再核實。","items":[["07:30–08:20","めりけんや早餐"],["09:35–約10:18","機場巴士／暫定"],["13:20–15:40","JX301 高松→台中"]],"coupon":"🎟️ 今天用券：機場巴士回程。請開啟本人帳號的動態優惠券頁面；截圖與紙本無效。","warning":"機場巴士依官方10/25–11/30表核對；班次仍可能變更，出發前重查。預留國際線報到、安檢與候車時間，報到優先於採買；航班以機票及航空公司通知為準。","transport":"住宿退房→高松站3號乘車處，暫搭09:35班→約10:18高松機場，使用回程優惠券。注意不是09:35→10:26；後者到達時間對應09:41班。報到後再採買，13:20搭JX301，15:40抵達台中。","stops":[{"time":"07:30–08:20","name":"めりけんや 高松駅前店","type":"早餐首選","desc":"最後一碗烏龍麵，約¥500–1,000／人；時間配合退房，不耽誤候車。","query":"めりけんや 高松駅前店"},{"time":"09:15前到站｜09:35–約10:18 暫定","name":"高松站 → 高松機場","type":"交通／優惠券","desc":"高松站3號乘車處，使用機場巴士回程券。官方表09:35→10:18；09:41→10:26。出發前再核實，滿座或塞車須有緩衝。","query":"高松駅 空港リムジンバス 3番のりば"},{"time":"抵達後｜報到優先","name":"高松機場｜報到與伴手禮","type":"機場","desc":"先辦理登機與託運，再視時間補買烏龍麵、和三盆等；留意安檢與登機截止時間。","query":"高松空港"},{"time":"13:20–15:40","name":"JX301 高松 → 台中","type":"返台航班","desc":"兩地當地時間；航班異動以航空公司通知為準。","query":"臺中國際機場"}]}];const namedAlternatives={"龍神丸 ゆめタウン高松店":["スシロー ゆめタウン高松店"],"焼肉 シージャン｜橄欖牛":["焼肉 一牛家 高松"],"一鶴 高松店":["骨付鳥 蘭丸 高松","海鮮うまいもんや 浜海道 鍛冶屋町店"],"高松海鮮居酒屋":["海鮮うまいもんや 浜海道 鍛冶屋町店","瀬戸内 海のもん とといち 高松"],"上原屋本店":["松下製麵所 高松","うどん棒 高松本店"],"觀光巴士途中午餐":["寒霞溪 山頂 レストラン","寒霞溪 山頂 売店"],"海鮮問屋 仲見世":["骨付鳥 蘭丸 高松","瀬戸内 海のもん とといち 高松"],"こんぴらうどん":["セルフうどん いわのや 琴平","讃岐うどん めん舟 琴平"],"橄欖牛燒肉（高松）":["焼肉 一牛家 高松","海鮮問屋 仲見世 高松"],"めりけんや 高松駅前店":["さぬき麺業 兵庫町店 高松","セブン-イレブン 高松駅前店"],"さぬき麺業 兵庫町店":["讃岐うどん えん家 片原町","めりけんや 高松駅前店"]};const guides=[{"id":"sanuki","region":"高松市區","days":[0],"icon":"🍜","name":"さぬき麺業 兵庫町店","lead":"抵達日先吃一碗讚岐烏龍麵","pick":"建議點釜揚げ或天婦羅烏龍麵；依店內當日菜單選擇。","why":"位於兵庫町，適合抵達市區、寄放行李後用餐，不必為第一餐繞路。","four":"每人一碗小份或一般份；炸物先各選一樣，避免第一餐吃太飽。","budget":"¥700–1,500／人（規劃估算）","hours":"官網兵庫町店頁列10:00–21:00、全年無休；仍需看臨時公告。","tip":"若入境延誤，縮短午餐與公園停留。備案：めりけんや高松站前店。","query":"さぬき麺業 兵庫町店 高松","source":"https://www.sanukiudon.co.jp/vip.html"},{"id":"ryujin","region":"YouMe Town","days":[0],"icon":"🐟","name":"龍神丸 ゆめタウン高松店","lead":"購物後吃稻草炙燒鰹魚","pick":"わら焼きかつおの塩タタキ（稻草炙燒鰹魚鹽敲燒）；不吃生食可改烤魚、煮魚或雞肉南蠻。","why":"就在購物商場內，用餐後可直接安排回住宿。","four":"各選一份定食；想比較口味可分食不同主菜，鰹魚先試小份。","budget":"¥1,500–2,500／人（規劃估算）","hours":"11:00–21:00，最後點餐20:30。行程安排19:00–20:00。","tip":"客滿改スシロー ゆめタウン高松店或商場內其他餐廳；候位與店休現場確認。","query":"龍神丸 ゆめタウン高松店","source":"https://www.izumi.jp/tenpo/takamatsu/shop/food/ryujinmaru"},{"id":"youme","region":"YouMe Town","days":[0],"icon":"🛍️","name":"YouMe Town 購物清單","lead":"先買旅途中會用的，再補伴手禮","pick":"建議找日本零食、常溫小包裝點心、日用品與想買的藥妝；以現場品牌與庫存為準。","why":"17:00–19:00集中購物，接著在同館吃晚餐，減少移動。","four":"先分成日用品與伴手禮兩組；約18:45集合並確認晚餐候位。","budget":"自行設定購物上限","hours":"各專櫃與食品賣場時間不同，請看官方樓層與店舖資訊。","tip":"買食品先看保存方式、有效日期與包裝重量；易碎品留出行李空間。","query":"ゆめタウン高松","source":"https://www.izumi.jp/tenpo/takamatsu/shop"},{"id":"uehara","region":"高松市區","days":[1],"icon":"🍜","name":"上原屋本店","lead":"栗林公園後，吃高湯系烏龍麵","pick":"かけうどん（熱湯烏龍麵）搭配現場喜歡的天婦羅；官網特別介紹小魚乾高湯。","why":"鄰近栗林公園，適合11:00離園後前往，不必特別繞路。","four":"每人一碗麵，天婦羅先挑不同種類分食；之後還有北濱咖啡時間。","budget":"¥500–1,000／人（規劃估算）","hours":"09:30–14:30，週日公休；本次安排週一11:15。","tip":"排隊太久可考慮松下製麵所；請先核對備案營業與移動時間。","query":"上原屋本店 高松","source":"https://ueharayahonten.com/"},{"id":"ikkaku","region":"高松市區","days":[1],"icon":"🍗","name":"一鶴 高松店","lead":"嫩雞好入口，老雞適合分食嚐鮮","pick":"ひなどり（嫩雞）柔嫩；おやどり（老雞）較有嚼勁。官網菜單列嫩雞¥1,090、老雞¥1,330。","why":"骨付鳥是這趟的香川名物晚餐；當晚與Onitsuka Tiger購物互換順序。","four":"建議先點3份嫩雞＋1份老雞比較，再依食量加飯；不喜歡韌口感可全選嫩雞。此為分食建議。","budget":"¥1,500–3,000／人（含配菜的估算）","hours":"當晚營業與候位需再確認；Tiger以20:00關門倒推順序。","tip":"雞肉調味較濃，搭飯較適合。候位過久可改骨付鳥蘭丸；備案仍需確認營業。","query":"一鶴 高松店","source":"https://www.ikkaku.co.jp/img-shop/pdf/takamatsu.pdf"},{"id":"kitahama","region":"高松市區","days":[1],"icon":"☕","name":"北濱 Alley 咖啡休息","lead":"把這站留給咖啡、散步與小店","pick":"依當天開門的店選咖啡或甜點；不指定尚未核實的必吃店家。","why":"12:45到訪後短暫休息，避免下午上屋島前太疲累。","four":"建議一人一杯飲料，甜點1–2份分食；預留交通時間，不為候位壓縮屋島。","budget":"¥800–1,500／人（規劃估算）","hours":"個別店舖營業不同，週一店休需當日查看。","tip":"目標15:30到屋島山上，先確認上山接駁時間再決定停留長度。","query":"北浜alley 高松","source":null},{"id":"kankakei","region":"小豆島","days":[2],"icon":"🍔","name":"寒霞溪山頂輕食","lead":"觀光巴士途中，優先快速用餐","pick":"橄欖牛可樂餅漢堡¥800；橄欖豬漢堡¥1,100；寒霞溪橄欖咖哩¥1,300（官方目前標價）。","why":"山頂站前美食區可選輕食；實際用餐地點與時間依觀光巴士停靠安排。","four":"建議各選一份主餐；想比較漢堡可分食。先問出餐時間，再確認回巴士集合時間。","budget":"¥800–1,700／人（依單品或套餐）","hours":"配合巴士停靠與當日供應；午餐不包含於已付¥39,200套票。","tip":"特製醬醪美乃滋是官方介紹的橄欖豬漢堡特色。若時間不夠，買快速輕食，勿錯過巴士。","query":"寒霞渓 山頂 フードコート","source":"https://www.kankakei.co.jp/gourmet/"},{"id":"olive","region":"小豆島","days":[2],"icon":"🫒","name":"橄欖公園・小豆島伴手禮","lead":"先挑橄欖點心、小包裝與實用品","pick":"可找橄欖油、橄欖點心與小香皂；官方商店也列有橄欖巧克力與餅乾類。","why":"搭配觀光巴士停靠購買，傍晚到天使之路後不用再繞店家。","four":"每人先挑一樣最想要的；共同送禮選小包裝，自己用再考慮橄欖油。","budget":"依品牌、容量與現場標價","hours":"以巴士實際停靠時間與商店營業為準。","tip":"食品看保存標示；油品確認瓶蓋密封並防漏。若沒有停靠購物時間，回高松再補買。","query":"小豆島オリーブ公園 売店","source":"https://story.olive-pk.jp/ja/category/gr09/"},{"id":"konpira","region":"琴平","days":[3],"icon":"🍜","name":"こんぴらうどん 參道店","lead":"下山後吃しょうゆ天，再逛老街","pick":"建議しょうゆ天うどん（醬油烏龍麵＋天婦羅），想吃湯麵可看現場菜單。","why":"就在金刀比羅宮參道，適合參拜結束後順路用餐。","four":"各點一碗，炸物選不同組合；若還想吃神椿甜點，麵量先選一般份。","budget":"¥700–1,200／人（規劃估算）","hours":"參道店營業與售完狀態請出發前查官方；午餐安排12:30左右。","tip":"若神椿也要去，建議下山經500階時先休息，再一路往參道吃麵，避免走回頭路。","query":"こんぴらうどん 参道店","source":"https://www.konpira.co.jp/"},{"id":"kamitsubaki","region":"琴平","days":[3],"icon":"🍨","name":"神椿 Cafe","lead":"500階處的和風聖代休息站","pick":"神椿パフェ：抹茶、紅豆與蕨餅等和風配料，搭おいり點綴。官方品牌頁目前列¥1,800；季節聖代另計。","why":"位於金刀比羅宮約500階，適合上山或下山途中休息，依體力調整。","four":"若店內允許分食，可點2份聖代搭各自飲料；用餐規則以現場為準。","budget":"甜點與飲料約¥1,800–3,000／人（估算）","hours":"10:00–17:00；食物最後點餐16:00、其他16:30；通常週二休，需看月曆。","tip":"本次是週三。建議下山經過時吃，再到山下用午餐；客滿不必為了甜點重爬階梯。","query":"神椿 琴平","source":"https://kamitsubaki.com/cafe/","extraSource":"https://parlour.shiseido.co.jp/shoplist/kamitsubaki_shop/"},{"id":"kyuman","region":"琴平","days":[3],"icon":"🎁","name":"琴平老街・灸まん","lead":"好分送的小點心，買完順路回車站","pick":"灸まん；也可比較栗まん、季節組合與烏龍麵禮盒。官方網店目前9個入灸まん¥972，店頭售價另確認。","why":"參道與老街散步時一起買，避免結束後再繞回來。","four":"先算要送幾戶，再比較盒裝或小包裝；可以合買一盒先試口味。","budget":"約¥1,000起／盒（規劃參考）","hours":"各店時間不同，建議下午逛老街時購買。","tip":"保存方式與期限依實際商品包裝；帶回台灣前確認商品成分與適用入境規定。","query":"灸まん本舗 石段や 琴平","source":"https://kyuman.co.jp/shop/products/list.php?category_id=0&pageno=1"},{"id":"beef","region":"高松市區","days":[3],"icon":"🥩","name":"焼肉 シージャン｜橄欖牛","lead":"第四晚的重點晚餐，18:30用餐","pick":"到店先問當日橄欖牛部位與價格，再選和牛拼盤或喜歡的單點；不把每一款和牛都視為橄欖牛。","why":"行程原定的橄欖牛燒肉晚餐，建議先確認4人訂位及橄欖牛供應。","four":"先點2–3種部位小份比較、搭白飯與蔬菜，再加點；此為點餐建議，非店家固定套餐。","budget":"¥6,000–8,000／人（規劃估算）","hours":"18:30為計畫時間，尚未確認訂位；實際營業、菜單與供應待確認。","tip":"備案：焼肉 一牛家；請另外確認營業、座位與當日橄欖牛供應。","query":"焼肉 シージャン 高松","source":null},{"id":"meriken","region":"高松市區","days":[4],"icon":"🍜","name":"めりけんや 高松駅前店","lead":"回程早上，最後一碗烏龍麵","pick":"建議かけうどん或ぶっかけ，再依現場菜單加一樣天婦羅；早餐不必點太多。","why":"高松站前，適合搭機場巴士前用餐；先完成退房與行李安排。","four":"各點一碗小份，炸物依食量選；07:30–08:20用餐，留出拿行李和候車時間。","budget":"¥500–1,000／人（規劃估算）","hours":"官方全日07:00–20:00。","tip":"09:15前到高松站候車；暫搭09:35→10:18機場班次，出發前再核實。","query":"めりけんや 高松駅前店","source":"https://merikenya.com/index.php/merikenyashop/takamatsuekimae"}];
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const maplink=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);
+const navlink=(q,mode='transit')=>'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q)+'&travelmode='+mode;
+const routeUrl=(a,b,mode='transit')=>'https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(a)+'&destination='+encodeURIComponent(b)+'&travelmode='+mode;
+let currentDay=0,currentMapDay=0,currentView='plan',guideRegion='全部',planScroll=0,mapQuery='',mapOpener=null;
+const guideIds=[['','','','sanuki','','youme','ryujin'],['','uehara','kitahama','','','', 'ikkaku'],['','','','kankakei','olive','','',''],['','','konpira','kamitsubaki','kyuman','beef'],['meriken','','','']];
+const summaries=[
+['4人各自掃碼登入領券，手機動態票券請保留。','台中 → 高松，兩地均為當地時間。','入境後搭巴士、先寄放行李；住宿以入住指南定位。','讚岐烏龍麵，時間配合入境調整。','城跡散步，預留交通時間前往商場。','購物2小時，再到同館吃晚餐。','推薦稻草炙燒鰹魚；最後點餐20:30。'],
+['庭園慢走2小時，使用星宇入園券。','かけうどん＋天婦羅，公園後順路吃。','倉庫街散步、喝咖啡；預留上山交通。','看高松與瀨戶內海，依A／B方案決定離開時間。','A搭16:54接駁；錯過或留看夕陽，B改預約計程車。','20:00前購物，與一鶴順序可互換。','骨付鳥晚餐，嫩雞柔嫩、老雞有嚼勁。'],
+['一般渡輪去程用券；呆呆獸船隻當日確認。','港區快速用餐；前一晚備飯糰，避免店家未開。','4人已付¥39,200，上車確認天使之路提前下車。','依巴士停靠時間用餐；午餐另計。','下車時間依巴士；可否通行看潮況與現場。','步行約30–35分鐘，預留候船緩衝。','一般渡輪回程用券，提早到港候船。','依回港時間選仍營業餐廳，疲累可改便利商店。'],
+['搭琴電到琴平，班次出發前查。','本宮約785階，依體力調整。','推薦しょうゆ天うどん，吃完逛老街。','500階處的甜點休息站；可改下山經過時先吃。','灸まん與常溫點心，順路買完回車站。','18:30計畫用餐；先確認4人訂位與橄欖牛供應。'],
+['最後一碗烏龍麵，預留退房與候車時間。','高松站3號乘車處；09:35→約10:18，出發前再核實。','先報到與託運，有餘裕再補伴手禮。','高松 → 台中，兩地均為當地時間。']
 ];
-const namedAlternatives={
- '龍神丸 ゆめタウン高松店':['スシロー ゆめタウン高松店'],
- '焼肉 シージャン｜橄欖牛':['焼肉 一牛家 高松'],
- '一鶴 高松店':['骨付鳥 蘭丸 高松','海鮮うまいもんや 浜海道 鍛冶屋町店'],
- '高松海鮮居酒屋':['海鮮うまいもんや 浜海道 鍛冶屋町店','瀬戸内 海のもん とといち 高松'],
- '上原屋本店':['松下製麵所 高松','うどん棒 高松本店'],
- '觀光巴士途中午餐':['寒霞溪 山頂 レストラン','寒霞溪 山頂 売店'],
- '海鮮問屋 仲見世':['骨付鳥 蘭丸 高松','瀬戸内 海のもん とといち 高松'],
- 'こんぴらうどん':['セルフうどん いわのや 琴平','讃岐うどん めん舟 琴平'],
- '橄欖牛燒肉（高松）':['焼肉 一牛家 高松','海鮮問屋 仲見世 高松'],
- 'めりけんや 高松駅前店':['さぬき麺業 兵庫町店 高松','セブン-イレブン 高松駅前店'],
- 'さぬき麺業 兵庫町店':['讃岐うどん えん家 片原町','めりけんや 高松駅前店']
-};
-const routeUrl=(a,b,mode='walking')=>'https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(a)+'&destination='+encodeURIComponent(b)+'&travelmode='+mode;
-const fullRoute=(d,n)=>n===2?routeUrl('エンジェルロード 小豆島','土庄港 フェリー','walking'):maplink(n===3?'琴電琴平駅':'高松');
-const maplink=q=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);const navlink=q=>'https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q)+'&travelmode=transit';function showMap(q){const query=q||'高松 片原町駅';document.getElementById('map').src='https://maps.google.com/maps?q='+encodeURIComponent(query)+'&z=15&output=embed';document.getElementById('mapOpen').href=maplink(query)}
-function render(n){
- const d=days[n];document.querySelectorAll('.tabs button').forEach((b,i)=>b.classList.toggle('active',i===n));
- document.getElementById('dailyCoupon').textContent=d.coupon;
- document.getElementById('daytitle').textContent='Day '+(n+1)+'｜'+d.title;
- document.getElementById('daydesc').textContent=d.date+' · '+d.desc; document.getElementById('schedule').innerHTML='<div class="depart"><strong>⏰ '+d.depart+'</strong><small>'+d.note+'</small></div><div class="dayplan">'+d.items.map(x=>'<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>'; 
- document.getElementById('warning').textContent='📌 '+d.warning;
- document.getElementById('transport').textContent=d.transport;
- document.getElementById('stops').innerHTML=d.stops.map((s,i)=>{
- const alts=namedAlternatives[s.name]||[]; const isFood=/餐|うどん|麺|鳥|海鮮|燒肉|焼肉|早餐|午餐|晚餐|超市|ファミリー|マルナカ/.test(s.name+s.type);
- const backupLinks=alts.map((a,j)=>`<a target="_blank" rel="noopener" href="${maplink(a)}">備案${j+1}：${a} ↗</a>`).join('');
- const fallback=s.alt?`<div class="pill">${s.alt}</div>`:'';
- const next=d.stops[i+1];const crossSea=n===2&&(i===0||i===6);const mode=(n===2&&i===4)||(n===0&&i===5)||(n===1&&(i===0||i===5))?'walking':'transit';const leg=(n===0&&i===0)?'<div class="leg">✈️ 下一段搭乘JX300，航班時間以機票為準。</div>':crossSea?'<div class="leg">⛴️ 此段搭一般渡輪，請依船班乘船，不使用陸路導航。</div>':next?`<div class="leg">↓ 下一站：${next.name}　<a target="_blank" rel="noopener" href="${routeUrl(s.query,next.query,mode)}">🧭 查看兩站路線 ↗</a></div>`:'';
- return `<article class="stop route-step"><div class="time">${s.time} · ${s.type}</div><h3>${i+1}. ${s.name}</h3><p>${s.desc}</p>${isFood?'<div class="meta"><span>🍽️ 用餐／採買安排</span><span>💴 預算為每人估算</span><span>🕒 出發前再看店休</span></div>':''}${fallback}<div class="links"><button class="btn" onclick="showMap(${JSON.stringify(s.query).replace(/"/g,'&quot;')})">🗺️ 地圖顯示</button><a target="_blank" rel="noopener" href="${maplink(s.query)}">📍 店家位置</a><a class="primary" target="_blank" rel="noopener" href="${navlink(s.query)}">🧭 一鍵導航</a></div>${backupLinks?`<div class="backup"><strong>客滿／排隊備案</strong><div class="links">${backupLinks}</div></div>`:''}${leg}</article>`
- }).join('');
- showMap(d.stops.find(x=>x.type==='首選餐廳')?.query||d.stops[0].query);
- document.getElementById('allMap').href=fullRoute(d,n);document.getElementById('allMap').textContent=n===2?'🚶 天使之路→土庄港步行路線':'🗺️ 開啟當日區域地圖（交通分段導航）';
- document.getElementById('copy').onclick=()=>{const t=`香川旅行 V8 ${d.date} ${d.title}\n${d.coupon}\n${d.warning}\n`+d.stops.map(s=>`${s.time} ${s.name}${s.alt?'｜'+s.alt:''}${namedAlternatives[s.name]?'｜備案：'+namedAlternatives[s.name].join('、'):''}`).join('\n');if(navigator.share)navigator.share({title:d.title,text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert('已複製當日清單'));else alert(t)};
+const important=[
+'✈️ 入境延誤時縮短公園停留；龍神丸19:00用餐，20:30最後點餐。',
+'🚌 A：16:54下山接駁。B：留看夕陽或錯過班次，事先約計程車；10/26無夜間臨時班。',
+'🎟️ 觀光巴士已付¥39,200／4人；上車確認提前下車。17:15離開天使之路，18:40一般渡輪返高松。',
+'🥩 18:30シージャン為計畫時間，訂位與橄欖牛供應待確認。參拜依體力調整。',
+'🚌 暫搭09:35→約10:18；09:41班才是10:26到。出發前複查，報到優先於採買。'
+];
+const coupons=['🎟️ 今天用券：機場巴士去程','🎟️ 今天用券：栗林公園','🎟️ 今天用券：一般渡輪來回，各1次','', '🎟️ 今天用券：機場巴士回程'];
+function setNav(){['navPlan','navGuide'].forEach(id=>{const active=(id==='navPlan')===(currentView==='plan');$(id).classList.toggle('active',active);if(active)$(id).setAttribute('aria-current','page');else $(id).removeAttribute('aria-current')});}
+function showView(view,restore=true){
+ if(view==='guide'&&currentView==='plan')planScroll=window.scrollY;
+ currentView=view;$('planView').hidden=view!=='plan';$('guideView').hidden=view!=='guide';setNav();
+ if(view==='guide'){renderGuides();window.scrollTo({top:0,behavior:'instant'})}else if(restore)window.scrollTo({top:planScroll,behavior:'instant'});
+ history.replaceState(null,'',view==='guide'?'#guide':'#day-'+(currentDay+1));
 }
-window.addEventListener('load',()=>{document.getElementById('tabs').innerHTML=days.map((d,i)=>`<button type="button" data-i="${i}">D${i+1}<br><small>${d.date.split('（')[0]}</small></button>`).join('');document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>render(Number(b.dataset.i)));render(0);document.getElementById('toPlan').onclick=()=>document.getElementById('daytitle').scrollIntoView({behavior:'smooth'});document.getElementById('toMap').onclick=()=>document.getElementById('mapPanel').scrollIntoView({behavior:'smooth'})});
+function render(n){
+ currentDay=n;const d=days[n];mapQuery=d.stops.find(s=>s.type==='首選餐廳')?.query||d.stops[0].query;
+ document.querySelectorAll('#tabs button').forEach((b,i)=>{b.classList.toggle('active',i===n);b.setAttribute('aria-pressed',String(i===n))});
+ $('daytitle').textContent='Day '+(n+1)+'｜'+d.title;$('daydesc').textContent=d.date+' · '+d.desc;
+ $('depart').textContent='⏰ '+d.depart;$('dailyCoupon').textContent=coupons[n];$('dailyCoupon').hidden=!coupons[n];$('important').textContent=important[n];
+ $('daynote').textContent=d.note;$('transport').textContent=d.transport;$('warning').textContent=d.warning;
+ $('stops').innerHTML=d.stops.map((s,i)=>{
+  const gid=guideIds[n][i],alts=namedAlternatives[s.name]||[];
+  const extra=gid?(s.alt||''):s.desc;
+  const next=d.stops[i+1],crossSea=n===2&&(i===0||i===6),flight=n===0&&i===0;
+  const mode=(n===2&&i===4)||(n===0&&i===5)||(n===1&&(i===0||i===5))?'walking':'transit';
+  const leg=flight?'✈️ 下一段搭乘JX300。':crossSea?'⛴️ 本段搭一般渡輪，依船班乘船。':next?'<a target="_blank" rel="noopener" href="'+esc(routeUrl(s.query,next.query,mode))+'">下一站交通：'+esc(next.name)+' ↗</a>':'';
+  const backup=alts.map(a=>'<a target="_blank" rel="noopener" href="'+esc(maplink(a))+'">備案：'+esc(a)+' ↗</a>').join('');
+  return '<article class="stop"><div class="time">'+esc(s.time)+'</div><h3><button type="button" class="place" data-map="'+i+'" aria-haspopup="dialog">'+esc(s.name)+'</button></h3><p>'+esc(summaries[n][i]||s.desc)+'</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener" href="'+esc(navlink(s.query,n===2&&i===5?'walking':'transit'))+'" aria-label="導航至'+esc(s.name)+'">📍 導航</a>'+(gid?'<button class="btn" type="button" data-guide="'+gid+'">🍜 看介紹</button>':'')+'</div>'+((extra||leg||backup)?'<details><summary>交通與備案</summary>'+(extra?'<p>'+esc(extra)+'</p>':'')+(leg?'<p>'+leg+'</p>':'')+'<div class="backup-links">'+backup+'</div></details>':'')+'</article>';
+ }).join('');
+ document.querySelectorAll('[data-map]').forEach(b=>b.onclick=()=>openMap(d.stops[Number(b.dataset.map)].query));
+ document.querySelectorAll('[data-guide]').forEach(b=>b.onclick=()=>openGuide(b.dataset.guide));
+ $('copy').onclick=()=>{const t='香川旅行 V8 '+d.date+' '+d.title+'\n'+coupons[n]+'\n'+important[n]+'\n'+d.stops.map(s=>s.time+' '+s.name).join('\n');if(navigator.share)navigator.share({title:d.title,text:t}).catch(()=>{});else if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>alert('已複製當日清單')).catch(()=>alert(t));else alert(t)};
+ if(currentView==='plan')history.replaceState(null,'','#day-'+(n+1));
+}
+function renderGuides(){
+ const regions=['全部','高松市區','YouMe Town','小豆島','琴平'];
+ $('guideFilters').innerHTML=regions.map(r=>'<button type="button" class="'+(guideRegion===r?'active':'')+'" aria-pressed="'+(guideRegion===r)+'" data-region="'+esc(r)+'">'+esc(r)+'</button>').join('');
+ document.querySelectorAll('[data-region]').forEach(b=>b.onclick=()=>{guideRegion=b.dataset.region;renderGuides()});
+ const shown=guides.filter(g=>guideRegion==='全部'||g.region===guideRegion);$('guideCount').textContent=shown.length+' 則吃買推薦 · 點開看分食、預算與營業資訊';
+ $('guideCards').innerHTML=shown.map(g=>'<article class="guide-card" id="guide-'+g.id+'"><div class="eyebrow">'+esc(g.region)+' · '+g.days.map(d=>'D'+(d+1)).join('／')+'</div><h3>'+g.icon+' '+esc(g.name)+'</h3><p class="lead">'+esc(g.lead)+'</p><div class="recommend"><b>推薦吃／買</b>'+esc(g.pick)+'</div><div class="budget">💴 '+esc(g.budget)+'</div><details><summary>怎麼點、怎麼買與營業資訊</summary><dl><dt>為什麼排這家</dt><dd>'+esc(g.why)+'</dd><dt>4人建議</dt><dd>'+esc(g.four)+'</dd><dt>營業與時間</dt><dd>'+esc(g.hours)+'</dd><dt>實用提醒</dt><dd>'+esc(g.tip)+'</dd></dl>'+(g.source?'<a class="source" href="'+esc(g.source)+'" target="_blank" rel="noopener">官方介紹／菜單 ↗</a>':'<p class="sub">此項為行程建議，店舖與當日供應待確認。</p>')+(g.extraSource?'<a class="source" href="'+esc(g.extraSource)+'" target="_blank" rel="noopener">官方品牌菜單與價格 ↗</a>':'')+'</details><div class="actions"><a class="btn primary" href="'+esc(navlink(g.query))+'" target="_blank" rel="noopener">📍 導航</a><button class="btn" type="button" data-guide-map="'+g.id+'" aria-haspopup="dialog">🗺️ 地圖</button><button class="btn" type="button" data-back-day="'+g.days[0]+'">回D'+(g.days[0]+1)+'行程</button></div></article>').join('');
+ document.querySelectorAll('[data-guide-map]').forEach(b=>b.onclick=()=>{const g=guides.find(g=>g.id===b.dataset.guideMap);openMap(g.query,g.name,g.days[0])});
+ document.querySelectorAll('[data-back-day]').forEach(b=>b.onclick=()=>{render(Number(b.dataset.backDay));planScroll=0;showView('plan')});
+}
+function openGuide(id){
+ guideRegion='全部';showView('guide');const target=$('guide-'+id);if(target){target.classList.add('focused');target.querySelector('details').open=true;target.setAttribute('tabindex','-1');target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'})}
+}
+function updateMap(q){mapQuery=q;$('map').src='https://maps.google.com/maps?q='+encodeURIComponent(q)+'&z=15&output=embed';$('mapNavigate').href=navlink(q);$('islandWalk').hidden=currentMapDay!==2;$('islandWalk').href=routeUrl('エンジェルロード 小豆島','土庄港 フェリー','walking');}
+function openMap(q=days[currentDay].stops.find(s=>s.query===mapQuery)?.query||days[currentDay].stops[0].query,name,day=currentDay){
+ currentMapDay=day;const list=days[day].stops.map(s=>({query:s.query,name:s.name}));if(!list.some(s=>s.query===q))list.push({query:q,name:name||q});
+ $('mapSelect').innerHTML=list.map(s=>'<option value="'+esc(s.query)+'">'+esc(s.name)+'</option>').join('');$('mapSelect').value=q;$('mapTitle').textContent='🗺️ Day '+(day+1)+' 地圖';updateMap(q);
+ mapOpener=document.activeElement;document.body.classList.add('modal-open');$('navMap').setAttribute('aria-expanded','true');$('mapDialog').showModal();$('closeMap').focus();
+}
+function init(){
+ $('tabs').innerHTML=days.map((d,i)=>'<button type="button" data-day="'+i+'" aria-label="Day '+(i+1)+' '+d.date+'">D'+(i+1)+'<small>'+d.date+'</small></button>').join('');
+ document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{render(Number(b.dataset.day));$('daytitle').scrollIntoView({block:'start',behavior:'instant'})});
+ $('navPlan').onclick=()=>showView('plan');$('returnPlan').onclick=()=>showView('plan');$('navGuide').onclick=()=>{guideRegion='全部';showView('guide')};$('navMap').onclick=()=>openMap();$('desktopMap').onclick=()=>openMap();$('closeMap').onclick=()=>$('mapDialog').close();$('mapSelect').onchange=e=>updateMap(e.target.value);
+ $('mapDialog').addEventListener('close',()=>{document.body.classList.remove('modal-open');$('navMap').setAttribute('aria-expanded','false');mapOpener?.focus({preventScroll:true})});
+ $('mapDialog').addEventListener('click',e=>{if(e.target===$('mapDialog')){const r=$('mapDialog').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('mapDialog').close()}});
+ const hash=location.hash;render(/^#day-[1-5]$/.test(hash)?Number(hash.slice(-1))-1:0);if(hash==='#guide')showView('guide');
+}
+window.addEventListener('DOMContentLoaded',init);
 </script></body></html>
