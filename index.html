@@ -79,7 +79,7 @@ function openMap(q=days[currentDay].stops.find(s=>s.query===mapQuery)?.query||da
 }
 function init(){
  $('tabs').innerHTML=days.map((d,i)=>'<button type="button" data-day="'+i+'" aria-label="Day '+(i+1)+' '+d.date+'">D'+(i+1)+'<small>'+d.date+'</small></button>').join('');
- document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{render(Number(b.dataset.day));$('daytitle').scrollIntoView({block:'start',behavior:'instant'})});
+ document.querySelectorAll('[data-day]').forEach(b=>b.onclick=()=>{render(Number(b.dataset.day));$('planView').scrollIntoView({block:'start',behavior:'instant'})});
  $('navPlan').onclick=()=>showView('plan');$('returnPlan').onclick=()=>showView('plan');$('navGuide').onclick=()=>{guideRegion='全部';showView('guide')};$('navMap').onclick=()=>openMap();$('desktopMap').onclick=()=>openMap();$('closeMap').onclick=()=>$('mapDialog').close();$('mapSelect').onchange=e=>updateMap(e.target.value);
  $('mapDialog').addEventListener('close',()=>{document.body.classList.remove('modal-open');$('navMap').setAttribute('aria-expanded','false');mapOpener?.focus({preventScroll:true})});
  $('mapDialog').addEventListener('click',e=>{if(e.target===$('mapDialog')){const r=$('mapDialog').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('mapDialog').close()}});
